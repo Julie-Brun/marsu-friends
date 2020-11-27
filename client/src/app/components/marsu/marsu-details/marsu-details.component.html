@@ -1,0 +1,47 @@
+<div id="marsuDetails" class="text-center m-4 p-4 mx-auto bg-warning border border-dark rounded" *ngIf="!isEditing">
+    <h2 class="m-4">Welcome, {{this.currentUser[0]?.name}} !</h2>
+    <p><span>Age :</span> {{this.currentUser[0]?.age}}</p>
+    <p><span>Family :</span> {{this.currentUser[0]?.family}}</p>
+    <p><span>Race :</span> {{this.currentUser[0]?.race}}</p>
+    <p><span>Food :</span> {{this.currentUser[0]?.food}}</p>
+    <button id="editButton" class="btn" (click)="onEdit()"><img src="assets/noun_edit_2162449.png" alt="Edit button"/></button>
+</div>
+
+<div 
+    id="marsuDetailsEdit" 
+    class="form-group d-flex flex-column m-4 p-4 mx-auto bg-warning border border-dark rounded"
+    [formGroup]="updateForm" 
+    *ngIf="isEditing">
+    <input 
+        class="form-control m-2" 
+        type="text" 
+        [formControlName]="'name'"
+        placeholder="Name" />
+    <input 
+        class="form-control m-2" 
+        type="text"
+        [formControlName]="'age'" 
+        placeholder="Age" />
+    <input 
+        class="form-control m-2" 
+        type="text" 
+        [formControlName]="'family'"
+        placeholder="Family" />
+    <input 
+        class="form-control m-2" 
+        type="text" 
+        [formControlName]="'race'"
+        placeholder="Race" />
+    <input 
+        class="form-control m-2" 
+        type="text" 
+        [formControlName]="'food'"
+        placeholder="Food" />
+    <button 
+        id="validateButton" 
+        class="btn" 
+        type="submit" 
+        (click)="onEdit()">
+        <img src="assets/noun_Check_2022865.png" alt="Validate button"/>
+    </button>
+</div>

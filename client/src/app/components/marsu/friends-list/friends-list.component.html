@@ -1,0 +1,9 @@
+<div id="friendList" class="text-center m-4 p-4 mx-auto overflow-auto bg-warning border border-dark rounded">
+    <h3 class="m-4">Your friendlist !</h3>
+    <ul class="list-group">
+        <app-friends-list-item 
+            *ngFor='let user of allUsers' 
+            [userName]='user.name' 
+            [user]='user'></app-friends-list-item> 
+    </ul>
+</div>

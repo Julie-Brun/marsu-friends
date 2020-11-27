@@ -1,0 +1,95 @@
+<div class="container text-center m-4 mx-auto bg-success rounded" *ngIf="regStatus">
+    <p class="text-light">User created !</p>
+</div>
+
+<form class="text-center border border-dark m-4 p-4 w-25 mx-auto bg-warning rounded" 
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmitRegister()"
+    *ngIf="userStatus === 'register'">
+    <h2 class="mb-4">Register</h2>
+    <div class="form-group">
+        <input class="form-control-sm border border-dark" 
+            id="name" 
+            placeholder="Name"
+            [formControlName]="'registerName'"/>
+        <p class="text-danger"
+            *ngIf="registerForm.get('registerName')!.dirty && registerForm.get('registerName')!.hasError('required')">Required</p>
+    </div>
+    <div class="form-group">
+        <input type="password" 
+            class="form-control-sm border border-dark" 
+            id="pwd" 
+            placeholder="Password"
+            [formControlName]="'registerPassword'"/>
+        <p class="text-danger"
+            *ngIf="registerForm.get('registerPassword')!.dirty && registerForm.get('registerPassword')!.hasError('required')">Required</p>
+    </div>
+    <div class="form-group">
+        <input class="form-control-sm border border-dark" 
+            id="age" 
+            placeholder="Age"
+            [formControlName]="'age'"/>
+        <p class="text-danger"
+            *ngIf="registerForm.get('age')!.dirty && registerForm.get('age')!.hasError('required')">Required</p>
+    </div>
+    <div class="form-group">
+        <input class="form-control-sm border border-dark" 
+            id="family" 
+            placeholder="Family"
+            [formControlName]="'family'"/>
+        <p class="text-danger"
+            *ngIf="registerForm.get('family')!.dirty && registerForm.get('family')!.hasError('required')">Required</p>
+    </div>
+    <div class="form-group">
+        <input class="form-control-sm border border-dark" 
+            id="race" 
+            placeholder="Race"
+            [formControlName]="'race'"/>
+        <p class="text-danger"
+            *ngIf="registerForm.get('race')!.dirty && registerForm.get('race')!.hasError('required')">Required</p>
+    </div>
+    <div class="form-group">
+        <input class="form-control-sm border border-dark" 
+            id="food" 
+            placeholder="Food"
+            [formControlName]="'food'"/>
+        <p class="text-danger"
+            *ngIf="registerForm.get('food')!.dirty && registerForm.get('food')!.hasError('required')">Required</p>
+    </div>
+    <button type="submit" 
+        class="btn btn-dark mb-4"
+        [disabled]="!registerForm.valid">Register</button>
+    <p>Already a member ? <span class="text-primary" (click)="onSwitch()">Log in !</span></p>
+</form>
+
+<div class="container text-center m-4 mx-auto bg-danger rounded" *ngIf="displayError">
+    <p class="text-light">Name and/or password don't match, houba !</p>
+</div>
+
+<form class="text-center border border-dark m-4 p-4 w-25 mx-auto bg-warning rounded" 
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmitLogin()"
+    *ngIf="userStatus === 'login'">
+    <h2 class="mb-4">Log In</h2>
+    <div class="form-group">
+        <input class="form-control-sm border border-dark" 
+            id="name" 
+            placeholder="Name"
+            [formControlName]="'loginName'"/>
+        <p class="text-danger"
+            *ngIf="loginForm.get('loginName')!.dirty && loginForm.get('loginName')!.hasError('required')">Required</p>
+    </div>
+    <div class="form-group">
+        <input type="password" 
+            class="form-control-sm border border-dark" 
+            id="pwd" 
+            placeholder="Password"
+            [formControlName]="'loginPassword'"/>
+        <p class="text-danger"
+            *ngIf="loginForm.get('loginPassword')!.dirty && loginForm.get('loginPassword')!.hasError('required')">Required</p>
+    </div>
+    <button type="submit" 
+        class="btn btn-dark mb-4"
+        [disabled]="!loginForm.valid">Log In</button>
+    <p>Not a member ? <span class="text-primary" (click)="onSwitch()">Register !</span></p>
+</form>

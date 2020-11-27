@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+nav {
+    background: url('assets/333cd5c2c0418378ee80a6519c3ecd41.jpg') no-repeat center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
