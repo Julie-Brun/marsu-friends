@@ -23,19 +23,17 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(express.static('./dist/package.json'));
-
 // Initialisation de la connexion à la base de données
-mongoose.connect('mongodb://localhost/appartoo_test', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/appartoo_test', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
 });
 
 // Routes
-app.get('/*', function (req, res) {
-    res.sendFile('index.html', {root: 'dist/package.json/'});
-});
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/index.html'));
+})
 app.use('/auth', auth);
 app.use('/marsu', marsupilami);
 
