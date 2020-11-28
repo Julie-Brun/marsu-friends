@@ -32,7 +32,7 @@ export class AuthService {
     return this.http.post<any>('/auth/login', JSON.stringify(data), this.httpOptions).subscribe((res01: any) => {
       localStorage.setItem('token', res01.token);
       const decoded: any = jwt_decode(res01.token);
-      this.marsuService.getProfile(decoded['id']).subscribe();
+      this.router.navigate(['profile/' + decoded['id']]);
     })
   }
 
@@ -40,7 +40,7 @@ export class AuthService {
     return this.http.get<any>('/auth/logout', this.httpOptions).subscribe((res: any) => {
       localStorage.clear();
       this.router.navigate(['auth']);
-    });
+    })
   }
 
   get isLoggedIn(): boolean {
