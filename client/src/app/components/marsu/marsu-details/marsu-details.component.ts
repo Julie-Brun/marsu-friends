@@ -29,7 +29,8 @@ export class MarsuDetailsComponent implements OnInit {
   ngOnInit(): void {
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.marsuService.getProfile(id).subscribe((res: any) => {
-      this.currentUser = res;
+      console.log(res);  
+      // this.currentUser = res;
     },
     (error) => {
       console.log('Help, error !', error);
