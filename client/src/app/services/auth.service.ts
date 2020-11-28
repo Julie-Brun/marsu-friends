@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   login(data: any) {
-    return this.http.post<any>(this.apiServer + '/auth/login', JSON.stringify(data), this.httpOptions).subscribe((res01: any) => {
+    return this.http.post<any>('/auth/login', JSON.stringify(data), this.httpOptions).subscribe((res01: any) => {
       localStorage.setItem('token', res01.token);
       const decoded: any = jwt_decode(res01.token);
       this.marsuService.getProfile(decoded['id']).subscribe((res02: any) => {
