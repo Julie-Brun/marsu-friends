@@ -30,12 +30,12 @@ export class MarsuDetailsComponent implements OnInit {
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.marsuService.getProfile(id).subscribe((res: any) => {
       this.currentUser = res;
-      this.updateForm.get('name')?.setValue(this.currentUser[0].name);
-      this.updateForm.get('age')?.setValue(this.currentUser[0].age);
-      this.updateForm.get('family')?.setValue(this.currentUser[0].family);
-      this.updateForm.get('race')?.setValue(this.currentUser[0].race);
-      this.updateForm.get('food')?.setValue(this.currentUser[0].food);
     })
+    this.updateForm.get('name')?.setValue(this.currentUser[0].name);
+    this.updateForm.get('age')?.setValue(this.currentUser[0].age);
+    this.updateForm.get('family')?.setValue(this.currentUser[0].family);
+    this.updateForm.get('race')?.setValue(this.currentUser[0].race);
+    this.updateForm.get('food')?.setValue(this.currentUser[0].food);
   }
 
   onEdit() {
