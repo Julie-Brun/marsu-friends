@@ -31,10 +31,9 @@ export class AuthService {
   login(data: any) {
     return this.http.post<any>(this.apiServer + '/auth/login', JSON.stringify(data), this.httpOptions).subscribe((res01: any) => {
       localStorage.setItem('token', res01.token);
-      console.log(res01);
       const decoded: any = jwt_decode(res01.token);
-      console.log(decoded);
       this.marsuService.getProfile(decoded['id']).subscribe((res02: any) => {
+        console.log(res02);
         this.currentUser = res02;   
         this.router.navigate(['profile/' + this.currentUser[0]._id]);
         console.log('Logged In !');
