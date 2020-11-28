@@ -35,7 +35,7 @@ export class AuthService {
       this.marsuService.getProfile(decoded['id']).subscribe((res02: any) => {
         console.log(res02);
         this.currentUser = res02;   
-        this.router.navigate(['profile/' + this.currentUser[0]._id]);
+        // this.router.navigate(['profile/' + this.currentUser[0]._id]);
         console.log('Logged In !');
       })
     })
