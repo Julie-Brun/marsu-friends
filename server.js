@@ -32,7 +32,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/appartoo_test',
 });
 
 // Routes
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/dist/front', 'index.html'));
 });
 
