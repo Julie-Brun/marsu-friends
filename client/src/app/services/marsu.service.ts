@@ -17,7 +17,7 @@ export class MarsuService {
   constructor(private http: HttpClient) { }
 
   getProfile(id: any): Observable<any> {
-    let endpoint = this.apiServer + '/marsu/profile/' + id;
+    let endpoint = '/marsu/profile/' + id;
     return this.http.get(endpoint, this.httpOptions);
   }
 
