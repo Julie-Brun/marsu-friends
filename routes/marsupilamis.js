@@ -5,15 +5,9 @@ const { getMarsusExceptOne, getMarsu, updateMarsu, getFriends, addFriend, delete
 const router = express.Router();
 
 router
-    .route('/profile/:id')
-    .get(getMarsu)
-    .put(updateMarsu);
-
-router
-    .route('/profile/:id/friends')
-    .get(getMarsusExceptOne);
-
-router
+    .get('/profile/:id', getMarsu)
+    .put('/profile/:id/update', updateMarsu)
+    .get('/profile/:id/friends', getMarsusExceptOne)
     .get('/profile/:id/friends/all', getFriends)
     .put('/profile/:id/friends/add', addFriend)
     .put('/profile/:id/friends/delete', deleteFriend);
