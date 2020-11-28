@@ -11,6 +11,7 @@ import { MarsuService } from '../../../services/marsu.service';
 })
 export class MarsuDetailsComponent implements OnInit {
 
+  id: any = this.actRoute.snapshot.paramMap.get('id');
   currentUser: any = {};
   isEditing: boolean = false;
 
@@ -27,8 +28,7 @@ export class MarsuDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let id = this.actRoute.snapshot.paramMap.get('id');
-    this.marsuService.getProfile(id).subscribe((res: any) => {
+    this.marsuService.getProfile(this.id).subscribe((res: any) => {
       console.log(res);  
       this.currentUser = res;
       this.updateForm.get('name')?.setValue(this.currentUser[0].name);
@@ -62,8 +62,7 @@ export class MarsuDetailsComponent implements OnInit {
           race: race,
           food: food
         };
-        let id = this.actRoute.snapshot.paramMap.get('id');
-        this.marsuService.updateProfile(id, data).subscribe((res: any) => {
+        this.marsuService.updateProfile(this.id, data).subscribe((res: any) => {
           console.log(res);
           this.ngOnInit();
         },
