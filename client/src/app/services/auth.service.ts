@@ -14,7 +14,6 @@ export class AuthService {
   isReg: boolean = false;
   currentUser: any = {};
 
-  private apiServer = "https://marsu-friends.herokuapp.com";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -25,7 +24,7 @@ export class AuthService {
 
   register(data: any): Observable<any> {
     this.isReg = true;
-    return this.http.post<any>(this.apiServer + '/auth/register', JSON.stringify(data), this.httpOptions)
+    return this.http.post<any>('/auth/register', JSON.stringify(data), this.httpOptions)
   }
 
   login(data: any) {
@@ -42,7 +41,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.get<any>(this.apiServer + '/auth/logout', this.httpOptions).subscribe((res: any) => {
+    return this.http.get<any>('/auth/logout', this.httpOptions).subscribe((res: any) => {
       localStorage.clear();
       this.router.navigate(['auth']);
     });
