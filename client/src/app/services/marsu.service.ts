@@ -23,7 +23,7 @@ export class MarsuService {
   }
 
   updateProfile(id: any, data: any): Observable<any> {
-    let endpoint = this.apiServer + id;
+    let endpoint = this.apiServer + id + '/update';
     return this.http.put(endpoint, JSON.stringify(data), this.httpOptions);
   }
 
