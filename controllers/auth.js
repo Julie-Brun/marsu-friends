@@ -19,6 +19,7 @@ exports.register = function (req, res) {
 };
 
 exports.login = function (req, res) {
+    console.log(res);
     Marsupilami.findOne({name : req.body.name}, function(err, marsu) {
         if (marsu) {
             bcrypt.compare(req.body.password, marsu.password, function(err, result) {
