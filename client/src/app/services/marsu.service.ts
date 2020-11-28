@@ -10,6 +10,7 @@ export class MarsuService {
   private apiServer = '/marsu/profile/';
   httpOptions = {
     headers: new HttpHeaders({
+      'Accept': 'application/json',
       'Content-Type': 'application/json'
     })
   };
