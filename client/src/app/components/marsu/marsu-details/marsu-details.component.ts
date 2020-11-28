@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs/operators';
 
 import { MarsuService } from '../../../services/marsu.service';
 
@@ -29,9 +28,15 @@ export class MarsuDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.actRoute.snapshot.paramMap.get('id');
-    this.marsuService.getProfile(id).pipe(map((res: any) => {
+    this.marsuService.getProfile(id).subscribe((res: any) => {
       this.currentUser = res;
-    }));
+    },
+    (error) => {
+      console.log('Help, error !', error);
+    },
+    () => {
+      console.log('Observation complete !');
+    })
   }
 
   onEdit() {
