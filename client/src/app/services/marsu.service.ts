@@ -17,9 +17,9 @@ export class MarsuService {
 
   constructor(private http: HttpClient) { }
 
-  getProfile(id: any) {
+  getProfile(id: any): Observable<any> {
     let endpoint = this.apiServer + id;
-    return this.http.get(endpoint, this.httpOptions);
+    return this.http.get<any>(endpoint, this.httpOptions);
   }
 
   updateProfile(id: any, data: any): Observable<any> {
