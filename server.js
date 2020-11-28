@@ -23,6 +23,8 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(express.static('./dist/package.json'));
+
 // Initialisation de la connexion à la base de données
 mongoose.connect('mongodb://localhost/appartoo_test', {
     useNewUrlParser: true,
@@ -31,6 +33,9 @@ mongoose.connect('mongodb://localhost/appartoo_test', {
 });
 
 // Routes
+app.get('/*', function (req, res) {
+    res.sendFile('index.html', {root: 'dist/package.json/'});
+});
 app.use('/auth', auth);
 app.use('/marsu', marsupilami);
 
