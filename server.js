@@ -4,6 +4,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     bearerToken = require('express-bearer-token'),
+    path = require('path'),
     app = express(),
     port = process.env.PORT || 3000,
 
@@ -33,7 +34,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/appartoo_test',
 // Routes
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/index.html'));
-})
+});
+
 app.use('/auth', auth);
 app.use('/marsu', marsupilami);
 
