@@ -33,7 +33,7 @@ export class AuthService {
       localStorage.setItem('token', res.token);
       console.log(res);
       const decoded: any = jwt_decode(res.token);
-      
+      console.log(decoded);
       this.marsuService.getProfile(decoded['id']).subscribe((res: any) => {
         this.currentUser = res;   
         console.log('01');
