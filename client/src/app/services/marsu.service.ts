@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MarsuService {
 
-  private apiServer = "https://marsu-friends.herokuapp.com";
+  private apiServer = '/marsu/profile/';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -17,27 +17,27 @@ export class MarsuService {
   constructor(private http: HttpClient) { }
 
   getProfile(id: any): Observable<any> {
-    let endpoint = '/marsu/profile/' + id;
+    let endpoint = this.apiServer + id;
     return this.http.get(endpoint, this.httpOptions);
   }
 
   updateProfile(id: any, data: any): Observable<any> {
-    let endpoint = this.apiServer + '/marsu/profile/' + id;
+    let endpoint = this.apiServer + id;
     return this.http.put(endpoint, JSON.stringify(data), this.httpOptions);
   }
 
   getAllExceptUserLoggedIn(id: any): Observable<any> {
-    let endpoint = this.apiServer + '/marsu/profile/' + id + '/friends';
+    let endpoint = this.apiServer + id + '/friends';
     return this.http.get(endpoint, this.httpOptions);
   }
 
   getFriends(id: any): Observable<any> {
-    let endpoint = this.apiServer + '/marsu/profile/' + id + '/friends/all';
+    let endpoint = this.apiServer + id + '/friends/all';
     return this.http.get(endpoint, this.httpOptions);
   }
 
   addFriend(idFriend: any, idUser: any): Observable<any> {
-    let endpoint = this.apiServer + '/marsu/profile/' + idUser + '/friends/add';
+    let endpoint = this.apiServer + idUser + '/friends/add';
     let data = {
       id: idFriend
     }
@@ -45,7 +45,7 @@ export class MarsuService {
   }
 
   deleteFriend(idFriend: any, idUser: any): Observable<any> {
-    let endpoint = this.apiServer + '/marsu/profile/' + idUser + '/friends/delete';
+    let endpoint = this.apiServer + idUser + '/friends/delete';
     let data = {
       id: idFriend
     }
