@@ -32,11 +32,6 @@ export class MarsuDetailsComponent implements OnInit {
     this.marsuService.getProfile(id).pipe(map((res: any) => {
       this.currentUser = res;
     }));
-    this.updateForm.get('name')?.setValue(this.currentUser[0].name);
-    this.updateForm.get('age')?.setValue(this.currentUser[0].age);
-    this.updateForm.get('family')?.setValue(this.currentUser[0].family);
-    this.updateForm.get('race')?.setValue(this.currentUser[0].race);
-    this.updateForm.get('food')?.setValue(this.currentUser[0].food);
   }
 
   onEdit() {
