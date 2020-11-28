@@ -32,16 +32,38 @@ export class FriendsListItemComponent implements OnInit {
       } else {
         return this.friendship;
       }
+    },
+    (error) => {
+      console.log('Help, error !', error);
+    },
+    () => {
+      console.log('Observation complete !');
     })
   }
 
   onFriend() {
     let id = this.actRoute.snapshot.paramMap.get('id');
     if(!this.friendship) {      
-      this.marsuService.addFriend(this.user._id, id).subscribe();
+      this.marsuService.addFriend(this.user._id, id).subscribe((res: any) => {
+        console.log(res); 
+      },
+      (error) => {
+        console.log('Help, error !', error);
+      },
+      () => {
+        console.log('Observation complete !');
+      });
       this.friendship = true;
     } else {
-      this.marsuService.deleteFriend(this.user._id, id).subscribe();
+      this.marsuService.deleteFriend(this.user._id, id).subscribe((res: any) => {
+        console.log(res); 
+      },
+      (error) => {
+        console.log('Help, error !', error);
+      },
+      () => {
+        console.log('Observation complete !');
+      });
       this.friendship = false;
     }
   }

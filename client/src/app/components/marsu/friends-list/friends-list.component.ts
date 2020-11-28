@@ -18,6 +18,12 @@ export class FriendsListComponent implements OnInit {
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.marsuService.getAllExceptUserLoggedIn(id).subscribe((res: any) => {
       this.allUsers = res;  
+    },
+    (error) => {
+      console.log('Help, error !', error);
+    },
+    () => {
+      console.log('Observation complete !');
     });
   }
 }

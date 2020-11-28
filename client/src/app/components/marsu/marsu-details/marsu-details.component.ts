@@ -30,7 +30,12 @@ export class MarsuDetailsComponent implements OnInit {
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.marsuService.getProfile(id).subscribe((res: any) => {
       console.log(res);  
-      // this.currentUser = res;
+      this.currentUser = res;
+      this.updateForm.get('name')?.setValue(this.currentUser[0].name);
+      this.updateForm.get('age')?.setValue(this.currentUser[0].age);
+      this.updateForm.get('family')?.setValue(this.currentUser[0].family);
+      this.updateForm.get('race')?.setValue(this.currentUser[0].race);
+      this.updateForm.get('food')?.setValue(this.currentUser[0].food);
     },
     (error) => {
       console.log('Help, error !', error);
@@ -61,6 +66,12 @@ export class MarsuDetailsComponent implements OnInit {
         this.marsuService.updateProfile(id, data).subscribe((res: any) => {
           console.log(res);
           this.ngOnInit();
+        },
+        (error) => {
+          console.log('Help, error !', error);
+        },
+        () => {
+          console.log('Observation complete !');
         });
         this.isEditing = false;
       } else {
