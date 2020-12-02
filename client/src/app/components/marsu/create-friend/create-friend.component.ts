@@ -26,10 +26,13 @@ export class CreateFriendComponent implements OnInit {
 
   onSubmitCreate() {
     if(this.createForm.valid) {
-      const createName = this.createForm.get('createName')?.value;
       let id = this.actRoute.snapshot.paramMap.get('id');
+      let createName = this.createForm.get('createName')?.value;
+      const data = {
+        name: createName
+      }
 
-      this.marsuService.createFriend(id, JSON.stringify(createName))
+      this.marsuService.createFriend(id, data)
         .subscribe(response => {
           this.createStatus = true;
           setTimeout(() => {
