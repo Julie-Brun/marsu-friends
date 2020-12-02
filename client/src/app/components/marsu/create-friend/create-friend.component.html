@@ -1,0 +1,17 @@
+<div class="container text-center m-4 mx-auto bg-success rounded" *ngIf="createStatus">
+    <p class="text-light">Friend created !</p>
+</div>
+    
+<form class="text-center border border-dark m-4 p-4 w-25 mx-auto bg-warning rounded" 
+        [formGroup]="createForm"
+        (ngSubmit)="onSubmitCreate()">
+    <h3>Create a friend !</h3>
+    <div class="form-group">
+        <input class="form-control-sm border border-dark" 
+            id="name" 
+            placeholder="Name"
+            [formControlName]="'createName'"/>
+        <p class="text-danger"
+            *ngIf="createForm.get('createName')!.dirty && createForm.get('createName')!.hasError('required')">Required</p>
+    </div>
+</form>

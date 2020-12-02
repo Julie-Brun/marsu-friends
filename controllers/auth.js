@@ -8,13 +8,26 @@ const jwt_secret = process.env.JWT_SECRET_KEY;
 
 exports.register = function (req, res) {
     console.log(req.body);
-    let hash = bcrypt.hashSync(req.body.password, 10);
-    req.body.password = hash;
-    Marsupilami.create(req.body, function(err, newMarsu) {
-        if (err) 
-            res.status(400).json(err);
-        else
-            res.status(201).json(newMarsu);
+    Marsupilami.findOne({name : req.body.name}, function(err, marsu) {
+        if(marsu) {
+            let hash = bcrypt.hashSync(req.body.password, 10);
+            req.body.password = hash;
+            Marsupilami.update({_id: marsu._id}, { $set: req.body }, {new: true}, function(err, updateMarsu) {
+                if(err)
+                    res.status(400).json(err);
+                else 
+                    res.status(200).json(updateMarsu);
+            });
+        } else {
+            let hash = bcrypt.hashSync(req.body.password, 10);
+            req.body.password = hash;
+            Marsupilami.create(req.body, function(err, newMarsu) {
+                if (err) 
+                    res.status(400).json(err);
+                else
+                    res.status(201).json(newMarsu);
+            });
+        };
     });
 };
 

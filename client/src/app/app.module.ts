@@ -20,6 +20,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { MarsuService } from './services/marsu.service';
+import { CreateFriendComponent } from './components/marsu/create-friend/create-friend.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MarsuService } from './services/marsu.service';
     FriendsListComponent,
     FriendsListItemComponent,
     LogoutComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    CreateFriendComponent
   ],
   imports: [
     CommonModule,

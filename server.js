@@ -19,7 +19,7 @@ app.use(cors());
 app.use(bearerToken());
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200");  
+    res.header("Access-Control-Allow-Origin", "https://marsu-friends.herokuapp.com/");  
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -40,6 +40,7 @@ app.use('/auth', auth);
 app.use('/marsu', marsupilami);
 
 app.get('/*', (req, res) => {
+    console.log('Hello, world !');
     res.sendFile(path.join(__dirname, '/client/dist/front', 'index.html'));
 });
 

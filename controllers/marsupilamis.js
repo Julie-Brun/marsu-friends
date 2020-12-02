@@ -1,7 +1,6 @@
 const Marsupilami = require('../models/Marsupilami'),
     Access = require('../utils'),
-    bcrypt = require('bcrypt'),
-    mongoose = require('mongoose');
+    bcrypt = require('bcrypt');
 
 require('dotenv').config();
 const jwt_secret = process.env.JWT_SECRET_KEY;
@@ -94,6 +93,27 @@ exports.deleteFriend = function (req, res) {
                     res.status(400).json(err);
                 else
                     res.status(200).json(data);
+            });
+        };
+    });
+}; 
+    
+exports.createFriend = function(req, res) {
+    Access.checkAccess(req.token, jwt_secret, function (err, decoded) {
+        if(err) 
+            res.status(403).json(err);
+        else {
+            Marsupilami.findOneAndUpdate({name: req.body.name}, { $set: req.body }, { upsert: true, new: true }, function(err, data) {
+                if(err)
+                    res.status(400).json(err);
+                else {
+                    Marsupilami.findOneAndUpdate({_id: req.params.id}, { $set:{ friends: data._id } }, { new: true }, function(err, data) {
+                        if(err)
+                            res.status(400).json(err);
+                        else 
+                            res.status(200).json(data);
+                    });
+                };
             });
         };
     });
