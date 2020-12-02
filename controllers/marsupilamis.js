@@ -1,6 +1,6 @@
 const Marsupilami = require('../models/Marsupilami'),
     Access = require('../utils'),
-    bcrypt = require('bcrypt');
+    mongoose = require('mongoose');
 
 require('dotenv').config();
 const jwt_secret = process.env.JWT_SECRET_KEY;
