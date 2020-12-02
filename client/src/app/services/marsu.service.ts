@@ -52,4 +52,9 @@ export class MarsuService {
     }
     return this.http.put(endpoint, data, this.httpOptions);
   }
+
+  createFriend(id: any, data: any): Observable<any> {
+    let endpoint = this.apiServer + id + '/friends/create';
+    return this.http.put(endpoint, data, this.httpOptions);
+  }
 }
