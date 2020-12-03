@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { MarsuService } from '../../../services/marsu.service';
@@ -14,7 +14,7 @@ export class FriendsListComponent implements OnInit {
 
   allUsers: any;
 
-  constructor(private actRoute: ActivatedRoute, private marsuService: MarsuService) { }
+  constructor(private actRoute: ActivatedRoute, private marsuService: MarsuService, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     let id = this.actRoute.snapshot.paramMap.get('id');
@@ -32,7 +32,8 @@ export class FriendsListComponent implements OnInit {
   onUpdateList() {
     if(this.updatedStatus) {
       console.log('Here I am !');
-      this.ngOnInit();
+      this.cd.detectChanges();
+      // this.ngOnInit();
     }
   }
 }
