@@ -5,6 +5,6 @@
     </div>
     <div id="thirdContainer" class="d-flex flex-row justify-content-around w-100 mx-auto">
         <app-logout></app-logout>
-        <app-create-friend (createStatus)='updateStatus($event)'></app-create-friend>
+        <app-create-friend (createStatus)='updateStatus($event)' [createStatus]='updatedStatus'></app-create-friend>
     </div>
 </div>
