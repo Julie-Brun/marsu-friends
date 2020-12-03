@@ -14,7 +14,7 @@ export class MarsuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  updateStatus() {
+  updateStatus(status: any) {
     this.createStatus = true;
     setTimeout(() => {
       this.createStatus = false;
