@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { MarsuService } from '../../../services/marsu.service';
@@ -6,7 +6,8 @@ import { MarsuService } from '../../../services/marsu.service';
 @Component({
   selector: 'app-friends-list',
   templateUrl: './friends-list.component.html',
-  styleUrls: ['./friends-list.component.css']
+  styleUrls: ['./friends-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FriendsListComponent implements OnInit {
 
@@ -14,9 +15,8 @@ export class FriendsListComponent implements OnInit {
 
   allUsers: any;
 
-  constructor(private actRoute: ActivatedRoute, private marsuService: MarsuService, private cd: ChangeDetectorRef) {
+  constructor(private actRoute: ActivatedRoute, private marsuService: MarsuService) {
     console.log(this.updatedStatus);
-    
   }
 
   ngOnInit(): void {
