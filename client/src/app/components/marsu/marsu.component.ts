@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarsuComponent implements OnInit {
 
+  createStatus: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  updateStatus() {
+    this.createStatus = true;
+    setTimeout(() => {
+      this.createStatus = false;
+    }, 4000);
   }
 
 }

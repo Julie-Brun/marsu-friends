@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { MarsuService } from '../../../services/marsu.service';
 })
 export class CreateFriendComponent implements OnInit {
 
-  createStatus: boolean = false;
+  @Output() createStatus = new EventEmitter<any>();
 
   createForm: FormGroup;
 
@@ -24,20 +24,20 @@ export class CreateFriendComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  emitStatus(status: any) {
+    this.createStatus.emit(status);
+  }
+
   onSubmitCreate() {
     if(this.createForm.valid) {
       let id = this.actRoute.snapshot.paramMap.get('id');
       let createName = this.createForm.get('createName')?.value;
       const data = {
         name: createName
-      }
+      };
 
       this.marsuService.createFriend(id, data)
         .subscribe(response => {
-          this.createStatus = true;
-          setTimeout(() => {
-            this.createStatus = false;
-          }, 4000);
           console.log(response);
         },
         error => {

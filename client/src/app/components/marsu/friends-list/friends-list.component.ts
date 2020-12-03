@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { MarsuService } from '../../../services/marsu.service';
@@ -9,6 +9,8 @@ import { MarsuService } from '../../../services/marsu.service';
   styleUrls: ['./friends-list.component.css']
 })
 export class FriendsListComponent implements OnInit {
+
+  @Input() createStatus: any;
 
   allUsers: any;
 
@@ -25,5 +27,10 @@ export class FriendsListComponent implements OnInit {
     () => {
       console.log('Observation complete !');
     });
+  }
+
+  onUpdateList() {
+    if(this.createStatus) 
+      this.ngOnInit();
   }
 }
