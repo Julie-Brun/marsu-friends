@@ -107,7 +107,7 @@ exports.createFriend = function(req, res) {
                 if(err)
                     res.status(400).json(err);
                 else {
-                    Marsupilami.findOneAndUpdate({_id: req.params.id}, { $set:{ friends: data._id } }, { new: true }, function(err, data) {
+                    Marsupilami.findOneAndUpdate({_id: req.params.id}, { $push:{ friends: data._id } }, { new: true }, function(err, data) {
                         if(err)
                             res.status(400).json(err);
                         else 

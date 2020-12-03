@@ -20,5 +20,4 @@ export class MarsuComponent implements OnInit {
       this.createStatus = false;
     }, 4000);
   }
-
 }

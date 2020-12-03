@@ -10,7 +10,7 @@ import { MarsuService } from '../../../services/marsu.service';
 })
 export class FriendsListComponent implements OnInit {
 
-  @Input() createStatus: any;
+  @Input() updatedStatus: any;
 
   allUsers: any;
 
@@ -30,7 +30,7 @@ export class FriendsListComponent implements OnInit {
   }
  
   onUpdateList() {
-    if(this.createStatus === true) 
+    if(this.updatedStatus) 
       this.ngOnInit();
   }
 }
