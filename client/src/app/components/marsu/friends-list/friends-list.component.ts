@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { MarsuService } from '../../../services/marsu.service';
@@ -8,15 +8,13 @@ import { MarsuService } from '../../../services/marsu.service';
   templateUrl: './friends-list.component.html',
   styleUrls: ['./friends-list.component.css']
 })
-export class FriendsListComponent implements OnInit {
+export class FriendsListComponent implements OnInit, OnChanges {
 
   @Input() updatedStatus: any;
 
   allUsers: any;
 
-  constructor(private actRoute: ActivatedRoute, private marsuService: MarsuService) {
-    console.log(this.updatedStatus);
-  }
+  constructor(private actRoute: ActivatedRoute, private marsuService: MarsuService) { }
 
   ngOnInit(): void {
     let id = this.actRoute.snapshot.paramMap.get('id');
@@ -29,5 +27,11 @@ export class FriendsListComponent implements OnInit {
     () => {
       console.log('Observation complete !');
     });
+  }
+
+  ngOnChanges(): void {
+    if(this.updatedStatus) {
+      this.ngOnInit();
+    }
   }
 }

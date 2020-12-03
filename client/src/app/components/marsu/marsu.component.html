@@ -1,7 +1,7 @@
 <div id="firstContainer" class="d-flex flex-column justify-content-start mx-auto">
     <div id="secondContainer" class="d-flex flex-row justify-content-around mx-auto">
         <app-marsu-details></app-marsu-details>
-        <app-friends-list [updatedStatus]='createStatus'></app-friends-list>
+        <app-friends-list [(updatedStatus)]='createStatus'></app-friends-list>
     </div>
     <div id="thirdContainer" class="d-flex flex-row justify-content-around w-100 mx-auto">
         <app-logout></app-logout>

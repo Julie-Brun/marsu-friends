@@ -11,8 +11,8 @@ import { MarsuService } from '../../../services/marsu.service';
 })
 export class CreateFriendComponent implements OnInit {
 
-  @Output() createStatus = new EventEmitter<any>();
-  @Input() updatedStatus: any;
+  @Output() createStatus = new EventEmitter<boolean>();
+  // @Input() updatedStatus: any;
 
   createForm: FormGroup;
 
