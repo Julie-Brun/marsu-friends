@@ -30,7 +30,9 @@ export class FriendsListComponent implements OnInit {
   }
  
   onUpdateList() {
-    if(this.updatedStatus) 
+    if(this.updatedStatus) {
+      console.log('Here I am !');
       this.ngOnInit();
+    }
   }
 }
