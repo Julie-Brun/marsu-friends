@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarsuComponent implements OnInit {
 
-  createStatus: boolean = false;
+  createStatus: any = false;
 
   constructor() { }
 
