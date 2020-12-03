@@ -28,4 +28,9 @@ export class FriendsListComponent implements OnInit {
       console.log('Observation complete !');
     });
   }
+ 
+  onUpdateList() {
+    if(this.createStatus === true) 
+      this.ngOnInit();
+  }
 }

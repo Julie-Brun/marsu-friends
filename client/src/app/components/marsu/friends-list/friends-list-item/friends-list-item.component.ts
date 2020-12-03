@@ -68,9 +68,4 @@ export class FriendsListItemComponent implements OnInit {
       this.friendship = false;
     }
   }
-
-  onUpdateList() {
-    if(this.createStatus) 
-      this.ngOnInit();
-  }
 }
