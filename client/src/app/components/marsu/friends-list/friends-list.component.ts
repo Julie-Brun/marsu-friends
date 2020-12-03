@@ -14,7 +14,10 @@ export class FriendsListComponent implements OnInit {
 
   allUsers: any;
 
-  constructor(private actRoute: ActivatedRoute, private marsuService: MarsuService, private cd: ChangeDetectorRef) { }
+  constructor(private actRoute: ActivatedRoute, private marsuService: MarsuService, private cd: ChangeDetectorRef) {
+    console.log(this.updatedStatus);
+    
+  }
 
   ngOnInit(): void {
     let id = this.actRoute.snapshot.paramMap.get('id');
@@ -29,11 +32,11 @@ export class FriendsListComponent implements OnInit {
     });
   }
  
-  onUpdateList() {
-    if(this.updatedStatus) {
-      console.log('Here I am !');
-      this.cd.detectChanges();
-      // this.ngOnInit();
-    }
-  }
+  // onUpdateList() {
+  //   if(this.updatedStatus) {
+  //     console.log('Here I am !');
+  //     this.cd.detectChanges();
+  //     // this.ngOnInit();
+  //   }
+  // }
 }
