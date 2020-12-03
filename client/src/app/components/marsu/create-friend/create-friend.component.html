@@ -5,7 +5,7 @@
 <form class="text-center border border-dark m-4 p-4 w-100 mx-auto bg-warning rounded" 
         [formGroup]="createForm"
         (ngSubmit)="onSubmitCreate()">
-    <h3>Create a friend !</h3>
+    <h3>Add a friend !</h3>
     <div class="form-group">
         <input class="form-control-sm border border-dark" 
             id="name" 
@@ -16,5 +16,5 @@
     </div>
     <button type="submit" 
     class="btn btn-dark mb-4"
-    [disabled]="!createForm.valid">Create Friend</button>
+    [disabled]="!createForm.valid">Add Friend</button>
 </form>
